@@ -2,6 +2,7 @@ package com.abduaziz.complexviewitems
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -30,17 +31,25 @@ class MessageAdapter : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() 
         val message = list[position]
         var flags = 0
 
-        if (message.attachment.isPhoto())
+        if (message.attachment.isPhoto()) {
             flags = flags or 1
+            Log.d("tag", flags.toString())
+        }
 
-        if (message.attachment.isMusic())
+        if (message.attachment.isMusic()) {
             flags = flags or 2
+            Log.d("tag", flags.toString())
+        }
 
-        if (message.attachment.isContact())
+        if (message.attachment.isContact()) {
             flags = flags or 4
+            Log.d("tag", flags.toString())
+        }
 
-        if (message.text.isNotBlank())
+        if (message.text.isNotBlank()) {
             flags = flags or 8
+            Log.d("tag", flags.toString())
+        }
 
         return flags
     }
